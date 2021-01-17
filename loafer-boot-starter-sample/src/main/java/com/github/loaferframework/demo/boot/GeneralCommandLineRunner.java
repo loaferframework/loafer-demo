@@ -14,25 +14,35 @@
  * limitations under the License.
  */
 
-package com.github.loaferframework.demo;
+package com.github.loaferframework.demo.boot;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import com.github.loaferframework.demo.middleware.Redis;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.stereotype.Component;
 
 /**
  * <p>
- * 创建时间: 2021年01月14号
+ * 创建时间: 2021年01月17号
  * 联系方式: hchkang8710@gmail.com
  * </p>
  *
  * @author kanghouchao
- * @since 2.0.0
+ * @since 0.0.1
  */
-@SpringBootApplication
-public class SampleApplication {
+@Slf4j
+@Component
+public class GeneralCommandLineRunner implements CommandLineRunner {
 
-    public static void main(String[] args) {
-        SpringApplication.run(SampleApplication.class, args);
+    private final Redis redis;
+
+    public GeneralCommandLineRunner(Redis redis) {
+        this.redis = redis;
+    }
+
+    @Override
+    public void run(String... args) {
+        log.info("redis address is {}", redis.getAddress());
     }
 
 }

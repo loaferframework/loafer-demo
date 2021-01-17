@@ -14,25 +14,26 @@
  * limitations under the License.
  */
 
-package com.github.loaferframework.demo;
+package com.github.loaferframework.demo.middleware;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import com.github.loaferframework.infrastructure.Middleware;
+import org.springframework.stereotype.Component;
 
 /**
  * <p>
- * 创建时间: 2021年01月14号
+ * 创建时间: 2021年01月17号
  * 联系方式: hchkang8710@gmail.com
  * </p>
  *
  * @author kanghouchao
- * @since 2.0.0
+ * @since 0.0.1
  */
-@SpringBootApplication
-public class SampleApplication {
+@Component
+public class Redis extends Middleware {
 
-    public static void main(String[] args) {
-        SpringApplication.run(SampleApplication.class, args);
+    @Override
+    protected String getName() {
+        return "redis";
     }
 
 }
